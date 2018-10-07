@@ -9,6 +9,6 @@ I HAVE CREATED A DATABASE called organization.db WHICH CONTAINS SOME DUMMY VALUE
 
 To run the project : 
 (1) pip install flask flask-sqlalchemy 
-(2) vitualenv for virtual environment
+(2) virtualenv for virtual environment
 (3) set FLASK_APP=__init__.py (since I'm using windows)
 (4) flask run
