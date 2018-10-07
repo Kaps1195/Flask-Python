@@ -59,13 +59,22 @@ def getByID(id):
 
 @app.route('/',methods=['POST'])
 def insert():
-    data=request.json
+    data = {}
+    data["id"] = request.form["id"]
+    data["first_name"] = request.form["first_name"]
+    data["last_name"] = request.form["last_name"]
+    data["device_id"] = request.form["device_id"]
+    #pprint.pprint(data)
     Employees().insert(data)
     return "Inserted"
 
-@app.route('/<int:id>',methods=['PATCH'])
+@app.route('/<int:id>',methods=['GET','PATCH'])
 def update(id):
-    data = request.json
+    data = {}
+    data["id"] = request.form["id"]
+    data["first_name"] = request.form["first_name"]
+    data["last_name"] = request.form["last_name"]
+    data["device_id"] = request.form["device_id"]
     Employees().update(id,data)
     return "UPDATED"
 
