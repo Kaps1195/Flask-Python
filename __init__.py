@@ -2,9 +2,10 @@ from flask import Flask,request
 from flask_sqlalchemy import SQLAlchemy
 
 import json as js
+import pprint
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:////Users/Kapil/Desktop/Kapil_Assignment/Kapil_Assignment/organization.db' # dialect+driver://username:password@host:port/database
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///organization.db' # dialect+driver://username:password@host:port/database
 
 db = SQLAlchemy(app)
 
@@ -59,7 +60,12 @@ def getByID(id):
 
 @app.route('/',methods=['POST'])
 def insert():
-    data=request.json
+    data = {}
+    data["id"] = request.form["id"]
+    data["first_name"] = request.form["first_name"]
+    data["last_name"] = request.form["last_name"]
+    data["device_id"] = request.form["device_id"]
+    pprint.pprint(data)
     Employees().insert(data)
     return "Inserted"
 
